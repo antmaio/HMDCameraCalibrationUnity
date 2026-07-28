@@ -3,6 +3,7 @@
 Unity application for the calibration of a Head-Mounted Display (HMD) against a multi-camera rig setup. 
 
 ## Requirements 
+- **Hardware:** Tested on MetaQuest 3
 - **Unity:** Tested on Unity 6000.0.42f1
 - **Packages:**
     - Meta MR Utility Kit 201.0.0
@@ -25,3 +26,29 @@ Unity application for the calibration of a Head-Mounted Display (HMD) against a 
 3. Copy paste ./Start Calibration/ folder into ./Assets/PassthroughCameraApiSamples/
 
 ## Usage
+1. Scan the room with the room scan framework from by MRUK. 
+2. Build the 
+
+
+## Project Structure
+After install, Unity project structure is supposed to look like:
+```
+Assets/
+├── PassthroughCameraApiSamples/       
+│   ├── PassthroughCamera/
+│   │   ├── Scripts/ 
+│   │   ├── Prefabs/
+│   ├── Start Calibration/ 
+│   │   ├── Scripts/ 
+│   │   ├── Prefabs/
+│   ├── Start Scene/
+├── MetaXR/
+├── Oculus/          
+├── Plugins/
+├── Resouces/
+├── Samples/
+├── StreamingAssets/
+├── XR/
+└──XRI/
+Packages/
+```
