@@ -1,6 +1,6 @@
 # HMD-Multiview Camera Rig Calibration in Unity
 
-Unity application for the calibration of a Head-Mounted Display (HMD) against a multi-camera rig setup. The method defines a fixed coordinate system $H_f$ that acts as a bridge between the virtual and physical worlds.   
+Unity application for the calibration of a Head-Mounted Display (HMD) against a multi-camera rig setup. The method defines a fixed coordinate system $\mathcal{H}_f$ that acts as a bridge between the virtual and physical worlds.   
 
 <!-- Add a screenshot or a GIF here-->
 <!-- ![demo](docs/demo.gif) -->
@@ -59,7 +59,7 @@ Packages/
 - **`PassthroughSnapshot`** — the orchestrator. On a controller button press, it captures a passthrough image and the current head/camera/XR-camera poses, re-expresses them in every active reference frame (tracking space, Guardian, spatial anchor, each MRUK frame), and saves it all to a JSON + PNG pair.
 
 ## Usage
-1. Scan the room with the room scan framework from by MRUK. Additionally, you can set up the guardian boundaries if you plan to use Guardian center-of-mass as $H_f$.
+1. Scan the room with the room scan framework from by MRUK. Additionally, you can set up the guardian boundaries if you plan to use Guardian center-of-mass as $\mathcal{H}_f$.
 2. Drag and drop  ```CalibrationRig``` in ```PassthroughCameraApiSamples/Start Calibration/Prefabs``` into the empty scene.
 3. Build and Run the solution into an APK.
 
