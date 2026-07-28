@@ -1,6 +1,10 @@
 # HMD-Multiview Camera Rig Calibration in Unity
 
-Unity application for the calibration of a Head-Mounted Display (HMD) against a multi-camera rig setup. The method defines a fixed coordinate system $\mathcal{H}_f$ that acts as a bridge between the virtual and physical worlds.   
+Unity application for calibrating a Head-Mounted Display (HMD) against a multi-camera rig setup. 
+
+The method defines a fixed coordinate system, $\mathcal{H}_f$, which serves as a bridge between the virtual and physical worlds. It explicitly utilizes the room scan provided by the Mixed Reality Utility Kit (MRUK) to identify the physical environment within the passthrough camera view and establish a fixed, custom coordinate system.
+
+Next, a snapshot of the checkerboard pattern—used to calibrate the multi-view camera rig—is captured from the HMD's left camera view, alongside its pose expressed in $\mathcal{H}_f$. Finally, we compute the transformation matrix $\mathbf{T}_{\mathcal{H}_f \to \mathcal{W}}$ between the virtual frame $\mathcal{H}_f$ and the physical world frame $\mathcal{W}$ (which was previously defined via standard multiview RGB camera calibration).
 
 <!-- Add a screenshot or a GIF here-->
 <!-- ![demo](docs/demo.gif) -->
