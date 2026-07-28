@@ -1,6 +1,6 @@
 # HMD-Multiview Camera Rig Calibration in Unity
 
-Unity application for the calibration of a Head-Mounted Display (HMD) against a multi-camera rig setup. 
+Unity application for the calibration of a Head-Mounted Display (HMD) against a multi-camera rig setup. The method defines a fixed coordinate system $H_f$ that acts as a bridge between the virtual and physical worlds.   
 
 <!-- Add a screenshot or a GIF here-->
 <!-- ![demo](docs/demo.gif) -->
@@ -54,7 +54,7 @@ Packages/
 
 ## Features
 - **`InitGuardianCOM`** — builds a room-centered reference frame from the Guardian boundary: computes the barycenter of the boundary points and an orientation from its longest edge. Optionally logs samples over time to track drift.
-- **`SceneReferenceFrame`** — using MRUK's room scan, spawns one coordinate frame per selected surface (floor, ceiling, walls, table, couch), each with a deterministic orientation (world-up + longest edge/wall normal). Exposes all frames via `ActiveFrames`.
+- **`SceneReferenceFrame`** — using MRUK's room scan, spawns one coordinate frame per selected surface (floor, ceiling, walls, table, couch), each with a deterministic orientation (world-up + longest edge/wall normal).
 - **`AxisDrawerForGO`** — reusable debug visualizer; draws an RGB axis triad on any GameObject, optionally following the Guardian frame's live updates.
 - **`PassthroughSnapshot`** — the orchestrator. On a controller button press, it captures a passthrough image and the current head/camera/XR-camera poses, re-expresses them in every active reference frame (tracking space, Guardian, spatial anchor, each MRUK frame), and saves it all to a JSON + PNG pair.
 
