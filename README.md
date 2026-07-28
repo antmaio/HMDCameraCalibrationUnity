@@ -80,7 +80,7 @@ MRUK scan ─► SceneReferenceFrame ─► per-surface frames
 5. Edit then run `pull/adbDownload.bat` or `pull/adbDownload.sh` depending on your OS to acquire data from `/storage/emulated/0/Android/data/%PACKAGE%/files`. It will download ALL .png or .jpg (for checkerboard snapshot) and .json (for HMD pose) from the `REMOTE_PATH` directory to `SAVE_PATH`. Note that `pull/adbDownload.sh` is not tested yet.
 
 
-<!--> 
+<!-- 
 ## Configuration
  
 Calibration parameters can be adjusted in `Assets/Resources/CalibrationConfig.json`:
@@ -112,4 +112,4 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 ## Acknowledgments
  
 - List any papers, libraries, or prior work you're building on here.
-<-->
+ -->
