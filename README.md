@@ -4,7 +4,7 @@ Unity application for calibrating a Head-Mounted Display (HMD) against a multi-c
 
 The method defines a fixed coordinate system, $\mathcal{H}_f$, which serves as a bridge between the virtual and physical worlds. It explicitly utilizes the room scan provided by the Mixed Reality Utility Kit (MRUK) to identify the physical environment within the passthrough camera view and establish a fixed, custom coordinate system.
 
-Next, a snapshot of the checkerboard pattern—used to calibrate the multi-view camera rig—is captured from the HMD's left camera view, alongside its pose expressed in $\mathcal{H}_f$. Finally, we compute the transformation matrix $\mathbf{T}_{\mathcal{H}_f \to \mathcal{W}}$ between the virtual frame $\mathcal{H}_f$ and the physical world frame $\mathcal{W}$ (which was previously defined via standard multiview RGB camera calibration).
+Next, a snapshot of the checkerboard pattern—used to calibrate the multi-view camera rig—is captured from the HMD's left camera view, alongside its pose expressed in $\mathcal{H}_f$. Finally, we compute the transformation matrix $\mathbf{T}_{\mathcal{H}}_f \to \mathcal{W}$ between the virtual frame $\mathcal{H}_f$ and the physical world frame $\mathcal{W}$ (which was previously defined via standard multiview RGB camera calibration).
 
 <!-- Add a screenshot or a GIF here-->
 <!-- ![demo](docs/demo.gif) -->
@@ -57,16 +57,23 @@ Packages/
 
 
 ## Features
-- **`InitGuardianCOM`** — builds a room-centered reference frame from the Guardian boundary: computes the barycenter of the boundary points and an orientation from its longest edge. Optionally logs samples over time to track drift.
 - **`SceneReferenceFrame`** — using MRUK's room scan, spawns one coordinate frame per selected surface (floor, ceiling, walls, table, couch), each with a deterministic orientation (world-up + longest edge/wall normal).
-- **`AxisDrawerForGO`** — reusable debug visualizer; draws an RGB axis triad on any GameObject, optionally following the Guardian frame's live updates.
-- **`PassthroughSnapshot`** — the orchestrator. On a controller button press, it captures a passthrough image and the current head/camera/XR-camera poses, re-expresses them in every active reference frame (tracking space, Guardian, spatial anchor, each MRUK frame), and saves it all to a JSON + PNG pair.
+- **`AxisDrawerForGO`** — reusable debug visualizer; draws an RGB axis triad on any GameObject.
+- **`PassthroughSnapshot`** - on a controller button press, it captures a passthrough image and the current head/camera/XR-camera poses, re-expresses them in the active reference frame (tracking space or each MRUK frame), and saves it all to a JSON + PNG pair.
+
+```
+MRUK scan ─► SceneReferenceFrame ─► per-surface frames
+                    │
+                    ▼
+        PassthroughSnapshot (on button press)
+        → captures image + poses, re-expressed i n every frame
+        → saves JSON + PNG
+```
 
 ## Usage
 1. Scan the room with the room scan framework from by MRUK. Additionally, you can set up the guardian boundaries if you plan to use Guardian center-of-mass as $\mathcal{H}_f$.
 2. Drag and drop  ```CalibrationRig``` in ```PassthroughCameraApiSamples/Start Calibration/Prefabs``` into the empty scene.
-3. Build and Run the solution into an APK.
-
+3. Build the solution into an Android application and run it in standalone mode on the VR device.
 
 
 <!--> 
