@@ -6,7 +6,7 @@ The method defines a fixed coordinate system, `H_f`, that bridges the virtual an
 
 A snapshot of the checkerboard pattern used to calibrate the multi-view camera rig is then captured from the HMD's left camera view, along with its pose expressed in `H_f`.
 
-Finally, we compute the transformation `T(H_f → W)` between the virtual frame `H_f` and the physical world frame `W`. The world frame `W` is defined separately via standard multi-view RGB camera calibration (e.g. checkerboard-based extrinsic calibration across the rig).
+We are finally able to compute the transformation `T(H_f → W)` between the virtual frame `H_f` and the physical world frame `W`. The world frame `W` is defined separately via standard multi-view RGB camera calibration (e.g. checkerboard-based extrinsic calibration across the rig).
 
 <!-- Add a screenshot or a GIF here-->
 <!-- ![demo](docs/demo.gif) -->
@@ -74,8 +74,10 @@ MRUK scan ─► SceneReferenceFrame ─► per-surface frames
 
 ## Usage
 1. Scan the room with the room scan framework from by MRUK. Additionally, you can set up the guardian boundaries if you plan to use Guardian center-of-mass as $\mathcal{H}_f$.
-2. Drag and drop  ```CalibrationRig``` in ```PassthroughCameraApiSamples/Start Calibration/Prefabs``` into the empty scene.
+2. Drag and drop  ```CalibrationRig``` from ```PassthroughCameraApiSamples/Start Calibration/Prefabs``` in the empty scene.
 3. Build the solution into an Android application and run it in standalone mode on the VR device.
+4. Press **A/One** on the right controller to capture a snapshot. The files are saved to `Application.persistentDataPath`.
+5. Edit then run `pull/adbDownload.bat` or `pull/adbDownload.sh` depending on your OS to acquire data from `/storage/emulated/0/Android/data/%PACKAGE%/files`. It will download ALL .png or .jpg (for checkerboard snapshot) and .json (for HMD pose) from the `REMOTE_PATH` directory to `SAVE_PATH`. Note that `pull/adbDownload.sh` is not tested yet.
 
 
 <!--> 
