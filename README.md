@@ -4,11 +4,15 @@ Unity application for calibrating a Head-Mounted Display (HMD) against a multi-c
 
 The method defines a fixed coordinate system, `H_f`, that bridges the virtual and physical worlds. It uses the room scan from Meta's Mixed Reality Utility Kit (MRUK) to identify a physical reference feature (e.g. a wall, floor, or table) visible in the passthrough camera view, and establishes `H_f` relative to it.
 
+![Hf](docs/com.umons.calibrationhmdtoworld-20260729-162133.jpg)
+
 A snapshot of the checkerboard pattern used to calibrate the multi-view camera rig is then captured from the HMD's left camera view, along with its pose expressed in `H_f`.
+
+![Snapshot](docs/Snapshot_20260616_111553.png)
 
 We are finally able to compute the transformation `T(H_f → W)` between the virtual frame `H_f` and the physical world frame `W`. The world frame `W` is defined separately via standard multi-view RGB camera calibration (e.g. checkerboard-based extrinsic calibration across the rig).
 
-![Snapshot](docs/Snapshot_20260616_111553.png)
+
 <!-- Add a screenshot or a GIF here-->
 <!-- ![demo](docs/demo.gif) -->
 
@@ -58,7 +62,6 @@ Assets/
 Packages/
 ```
 
-
 ## Features
 - **`SceneReferenceFrame`** — using MRUK's room scan, spawns one coordinate frame per selected surface (floor, ceiling, walls, table, couch), each with a deterministic orientation (world-up + longest edge/wall normal).
 - **`AxisDrawerForGO`** — reusable debug visualizer; draws an RGB axis triad on any GameObject.
@@ -76,10 +79,13 @@ MRUK scan ─► SceneReferenceFrame ─► per-surface frames
 ## Usage
 1. Scan the room with the room scan framework from by MRUK. Additionally, you can set up the guardian boundaries if you plan to use Guardian center-of-mass as $\mathcal{H}_f$.
 2. Drag and drop  ```CalibrationRig``` from ```PassthroughCameraApiSamples/Start Calibration/Prefabs``` in the empty scene.
-3. Build the solution into an Android application and run it in standalone mode on the VR device.
-4. Press **A/One** on the right controller to capture a snapshot. The files are saved to `Application.persistentDataPath`.
-5. Edit then run `pull/adbDownload.bat` or `pull/adbDownload.sh` depending on your OS to acquire data from `/storage/emulated/0/Android/data/%PACKAGE%/files`. It will download ALL .png or .jpg (for checkerboard snapshot) and .json (for HMD pose) from the `REMOTE_PATH` directory to `SAVE_PATH`. Note that `pull/adbDownload.sh` is not tested yet.
+3. Add StartScene and StartCalibration to the Scene List in Build Profiles, then build and run (Android).
+4. Click on Start Calibration 
 
+![Start Calibration](docs/com.umons.calibrationhmdtoworld-20260729-161851.jpg)
+
+5. Press **A/One** on the right controller to capture a snapshot. The files are saved to `Application.persistentDataPath`.
+5. Edit then run `pull/adbDownload.bat` or `pull/adbDownload.sh` depending on your OS to acquire data from `/storage/emulated/0/Android/data/%PACKAGE%/files`. It will download ALL .png or .jpg (for checkerboard snapshot) and .json (for HMD pose) from the `REMOTE_PATH` directory to `SAVE_PATH`. Note that `pull/adbDownload.sh` is not tested yet.
 
 <!-- 
 ## Configuration
@@ -114,3 +120,4 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
  
 - List any papers, libraries, or prior work you're building on here.
  -->
+
