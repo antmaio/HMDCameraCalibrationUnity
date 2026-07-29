@@ -8,6 +8,7 @@ A snapshot of the checkerboard pattern used to calibrate the multi-view camera r
 
 We are finally able to compute the transformation `T(H_f → W)` between the virtual frame `H_f` and the physical world frame `W`. The world frame `W` is defined separately via standard multi-view RGB camera calibration (e.g. checkerboard-based extrinsic calibration across the rig).
 
+![Snapshot](docs/Snapshot_20260616_111553.png)
 <!-- Add a screenshot or a GIF here-->
 <!-- ![demo](docs/demo.gif) -->
 
